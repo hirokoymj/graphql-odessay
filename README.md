@@ -1,28 +1,8 @@
-# Odyssey Client-side GraphQL with React & Apollo
+# Client-side GraphQL Demo with React & Apollo
 
-Welcome to the companion app of Odyssey Client-side GraphQL with React & Apollo! You can [find the course lessons and instructions on Odyssey](https://odyssey.apollographql.com/client-side-graphql-react), Apollo's learning platform.
-
-You can [preview the completed demo app here](https://odyssey-catstronauts.netlify.app/).
-
-## How to use this repo
-
-The course will walk you step by step on how to implement the features you see in the demo app. This codebase is the starting point of your journey!
-
-To get started:
-
-1. Open an IDE at the root of the project.
-1. Run `npm install`.
-1. Run `npm start`.
-
-This will open up `localhost:3000` in your web browser.
-
-## Getting Help
-
-For any issues or problems concerning the course content, please refer to the [Odyssey topic in our community forums](https://community.apollographql.com/tags/c/help/6/odyssey).
-
-## Hiroko note
-
-- https://www.apollographql.com/tutorials/client-side-graphql-react/09-introducing-mutations
+- **Tutorial**: https://odyssey.apollographql.com/client-side-graphql-react
+- **GraphQL endpoint**: https://odyssey-lift-off-server.herokuapp.com/
+- **Sandbox**: https://studio.apollographql.com/sandbox/explorer
 
 ## Codegen
 
@@ -37,11 +17,10 @@ npm install -D @graphql-codegen/cli @graphql-codegen/client-preset
   "generate": "graphql-codegen" ///Add
 },
 
-
-//Create codegen.ts file.
-
-codegen.ts
+touch codegen.ts
 ```
+
+**codegen.ts**
 
 ```js
 import { CodegenConfig } from '@graphql-codegen/cli';
@@ -65,4 +44,32 @@ export default config;
 
 ```js
 npm run generate
+```
+
+## Deploy Heroku
+
+```js
+//1. Install serve
+npm install --save serve
+
+//2. Add a start script that uses serve to serve the built dist folder.
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "start": "serve -s dist" ## Add serve
+},
+
+//3. Create a Procfile
+touch Procfile
+web: npm run start
+
+//4. Deploy to Heroku.
+heroku login
+git push origin main
+heroku login
+heroku git:clone -a graph-odyssey
+git add .
+$ git commit -am "make it better"
+$ git push heroku main
 ```
