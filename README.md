@@ -23,3 +23,46 @@ For any issues or problems concerning the course content, please refer to the [O
 ## Hiroko note
 
 - https://www.apollographql.com/tutorials/client-side-graphql-react/09-introducing-mutations
+
+## Codegen
+
+```js
+npm install -D @graphql-codegen/cli @graphql-codegen/client-preset
+
+///package.json
+"scripts": {
+  "test": "vitest",
+  "start": "vite",
+  "build": "vite build",
+  "generate": "graphql-codegen" ///Add
+},
+
+
+//Create codegen.ts file.
+
+codegen.ts
+```
+
+```js
+import { CodegenConfig } from '@graphql-codegen/cli';
+
+const config: CodegenConfig = {
+  schema: 'https://odyssey-lift-off-server.herokuapp.com/',
+  documents: ['src/**/*.tsx'],
+  generates: {
+    './src/__generated__/': {
+      preset: 'client',
+      presetConfig: {
+        gqlTagName: 'gql',
+      },
+    },
+  },
+  ignoreNoDocuments: true, //optional
+};
+
+export default config;
+```
+
+```js
+npm run generate
+```
