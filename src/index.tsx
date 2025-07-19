@@ -16,11 +16,7 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <GlobalStyles />
-      <SnackbarProvider
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}>
+      <SnackbarProvider>
         <Pages />
       </SnackbarProvider>
     </ApolloProvider>

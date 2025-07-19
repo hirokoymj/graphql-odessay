@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import type { Track } from '../__generated__/graphql';
 import { useMutation } from '@apollo/client';
 import { gql } from '../__generated__';
-import { SnackbarProvider, enqueueSnackbar, useSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 
 const INCREMENT_TRACK_VIEWS = gql(`
   mutation IncrementTrackViews($incrementTrackViewsId: ID!) {
@@ -28,8 +28,12 @@ const TrackCard: React.FC<{ track: Omit<Track, 'modules'> }> = ({ track }) => {
     variables: { incrementTrackViewsId: id },
     onCompleted: (data) => {
       console.log(data);
-      enqueueSnackbar('Incremented the track view.', {
+      enqueueSnackbar('the track view was incremented!.', {
         variant: 'success',
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right',
+        },
       });
     },
   });
@@ -42,9 +46,6 @@ const TrackCard: React.FC<{ track: Omit<Track, 'modules'> }> = ({ track }) => {
         </CardImageContainer>
         <CardBody>
           <CardTitle>{title || ''}</CardTitle>
-          <button onClick={() => enqueueSnackbar('That was easy!')}>
-            Show snackbar
-          </button>
           <CardFooter>
             <AuthorImage src={author.photo || ''} />
             <AuthorAndTrack>

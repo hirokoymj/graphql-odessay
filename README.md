@@ -73,3 +73,13 @@ git add .
 $ git commit -am "make it better"
 $ git push heroku main
 ```
+
+## useQuery vs useMutation
+
+```js
+const { d, l, e } = useQuery(GraphQL, options);
+const [mutateFunction, { d, l, e }] = useMutation(GraphQL, options);
+```
+
+- `useQuery` returns an **object**, `useMutation` returns **array**.
+- `useQuery` runs automatically, `useMutations` runs by a user action to trigger mutate function.
