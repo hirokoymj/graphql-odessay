@@ -76,7 +76,7 @@ const [mutateFunction, { d, l, e }] = useMutation(GraphQL, options);
 ```
 
 - `useQuery` returns an **object**, `useMutation` returns **array**.
-- `useQuery` runs automatically, `useMutations` runs by a user action to trigger mutate function.
+- `useQuery` runs automatically, `useMutation` runs by a user action to trigger a **mutate function**.
 
 <hr />
 
