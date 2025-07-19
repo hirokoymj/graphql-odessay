@@ -11,10 +11,7 @@ npm install -D @graphql-codegen/cli @graphql-codegen/client-preset
 
 ///package.json
 "scripts": {
-  "test": "vitest",
-  "start": "vite",
-  "build": "vite build",
-  "generate": "graphql-codegen" ///Add
+  "generate": "graphql-codegen" // Add a generate command.
 },
 
 touch codegen.ts
@@ -54,10 +51,7 @@ npm install --save serve
 
 //2. Add a start script that uses serve to serve the built dist folder.
 "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
-  "start": "serve -s dist" ## Add serve
+    "start": "serve -s dist" //Add a start command.
 },
 
 //3. Create a Procfile
@@ -83,3 +77,16 @@ const [mutateFunction, { d, l, e }] = useMutation(GraphQL, options);
 
 - `useQuery` returns an **object**, `useMutation` returns **array**.
 - `useQuery` runs automatically, `useMutations` runs by a user action to trigger mutate function.
+
+### Options
+
+```js
+variables:{}
+refetchQueries: [QUERY]
+context: { clientName: 'spaceXApi' },
+fetchPolicy: 'cache-first' | 'network-only'
+onComplete: (data) => {}
+```
+
+- [useQuery - options](https://www.apollographql.com/docs/react/data/queries#options)
+- [useMutations - options](https://www.apollographql.com/docs/react/data/mutations#options)
