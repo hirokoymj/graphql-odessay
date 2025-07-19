@@ -78,6 +78,23 @@ const [mutateFunction, { d, l, e }] = useMutation(GraphQL, options);
 - `useQuery` returns an **object**, `useMutation` returns **array**.
 - `useQuery` runs automatically, `useMutations` runs by a user action to trigger mutate function.
 
+<hr />
+
+```js
+const [createCategory, { data, loading, error }] = useMutation(MUTATION, {
+  OPTION,
+});
+const onSubmit = async () => {
+  try {
+    await createCategory({
+      variables: {
+        input: { name: 'TEST-777' },
+      },
+    });
+  } catch (e) {}
+};
+```
+
 ### Options
 
 ```js
